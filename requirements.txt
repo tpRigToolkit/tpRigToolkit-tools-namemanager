@@ -1,0 +1,8 @@
+# ===================================================================
+# tpRigToolkit-tools-namemanager requirements file
+# ===================================================================
+
+lucidity
+tpRigToolkit-core
+tpDcc-libs-nameit
+tpDcc-tools-nameit
