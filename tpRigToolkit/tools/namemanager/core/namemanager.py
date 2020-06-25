@@ -20,9 +20,6 @@ from tpDcc.libs.qt.widgets import toolset
 # Defines ID of the tool
 TOOL_ID = 'tpRigToolkit-tools-namemanager'
 
-# We skip the reloading of this module when launching the tool
-no_reload = True
-
 
 class NameManagerTool(tool.DccTool, object):
     def __init__(self, *args, **kwargs):
@@ -63,11 +60,14 @@ class NameManagerToolset(toolset.ToolsetWidget, object):
     ID = TOOL_ID
 
     def __init__(self, *args, **kwargs):
+
+        self._project = kwargs.pop('project', None)
+
         super(NameManagerToolset, self).__init__(*args, **kwargs)
 
     def contents(self):
         from tpRigToolkit.tools.namemanager.widgets import namemanager
-        name_manager_widget = namemanager.NameManager(parent=self)
+        name_manager_widget = namemanager.NameManager(project=self._project, parent=self, dev=self._dev)
 
         return [name_manager_widget]
 
